@@ -33,7 +33,7 @@ namespace Assignment3_SaleManagement
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id=1}"
+                    pattern: "{controller=Member}/{action=List}/{id=0}"
                     );
             });
         }

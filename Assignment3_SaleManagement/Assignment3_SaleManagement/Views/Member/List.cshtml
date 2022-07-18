@@ -1,0 +1,57 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Assignment3_SaleManagement.Models
+@model List<Member>
+
+@{ 
+    List<Member> members = (List<Member>)ViewBag.Members;
+}
+
+<!doctype html>
+<html>
+<head>
+
+</head>
+
+<body>
+    <h1>Hello Member view</h1>
+    <select>
+        @{ 
+            foreach(Member m in members)
+            {
+                <option value="@m.MemberId">@m.Email</option>
+            }
+        }
+    </select>
+    
+
+    <table border="1" style="margin-top: 20px">
+        <thead>
+            <tr>
+                <td>Member ID</td>
+                <td>Password</td>
+                <td>Member Email</td>
+                <td>Member Company</td>
+                <td>Member City</td>
+                <td>Member Country</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (Member m in Model)
+                {
+                    <tr>
+                        <td>@m.MemberId</td>
+                        <td>@m.Password</td>
+                        <td>@m.Email</td>
+                        <td>@m.CompanyName</td>
+                        <td>@m.City</td>
+                        <td>@m.Country</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>
