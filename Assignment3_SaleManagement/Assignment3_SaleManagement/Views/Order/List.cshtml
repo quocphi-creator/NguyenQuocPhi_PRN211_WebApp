@@ -1,0 +1,83 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@using Assignment3_SaleManagement.Models
+@model List<Order>
+
+@{
+    List<Member> members = (List<Member>)ViewBag.Members;
+    int CurMemberId = (int)ViewBag.CurrentMemberId;
+}
+
+<!doctype html>
+<html>
+<head>
+    <title>Order List</title>
+</head>
+<body>
+    Hello orders
+    <form action="~/Order/List" method="post">
+        <select name="id" onchange="this.form.submit()">
+            @{
+                <option value="0">All Order</option>
+                foreach (Member m in members)
+                {
+                    <option value="@m.MemberId" @((m.MemberId == CurMemberId) ? "selected" : "")>@m.Email</option>
+                }
+            }
+        </select>
+    </form>
+
+
+    @{
+        if (Model.Count() == 0)
+        {
+            <h1>No data to display</h1>
+        }
+        else
+        {
+            <table border="1" style="margin-top: 20px">
+                <thead>
+                    <tr>
+                        <th>OrderID</th>
+                        <th>Email</th>
+                        <th>Country</th>
+                        <th>City</th>
+                        <th>Company</th>
+                        <th>Order Date</th>
+                        <th>Require Date</th>
+                        <th>Ship Date</th>
+                        <th>Freight</th>
+                        <th colspan="3">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        foreach (Order o in Model)
+                        {
+                            <tr>
+                                <td>@o.OrderId</td>
+                                <td>@o.Member.Email</td>
+                                <td>@o.Member.Country</td>
+                                <td>@o.Member.City</td>
+                                <td>@o.Member.CompanyName</td>
+                                <td>@o.OrderDate</td>
+                                <td>@o.RequiredDate</td>
+                                <td>@o.ShippedDate</td>
+                                <td>@o.Freight</td>
+                                <td><a href="~/Order/Insert">Insert</a></td>
+                                <td><a href="~/Order/Delete/@o.OrderId">Delte</a></td>
+                                <td><a href="~/Order/FormEdit/@o.OrderId">Edit</a></td>
+                                
+
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        }
+    }
+
+</body>
+</html>

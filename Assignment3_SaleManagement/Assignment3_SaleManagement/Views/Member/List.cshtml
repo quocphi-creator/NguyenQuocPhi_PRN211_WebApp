@@ -4,8 +4,9 @@
 @using Assignment3_SaleManagement.Models
 @model List<Member>
 
-@{ 
+@{
     List<Member> members = (List<Member>)ViewBag.Members;
+    
 }
 
 <!doctype html>
@@ -17,24 +18,26 @@
 <body>
     <h1>Hello Member view</h1>
     <select>
-        @{ 
-            foreach(Member m in members)
+        @{
+            foreach (Member m in members)
             {
-                <option value="@m.MemberId">@m.Email</option>
+                <option value="@m.MemberId" >
+                    @m.Email
+                </option>
             }
         }
     </select>
-    
+
 
     <table border="1" style="margin-top: 20px">
         <thead>
             <tr>
-                <td>Member ID</td>
-                <td>Password</td>
-                <td>Member Email</td>
-                <td>Member Company</td>
-                <td>Member City</td>
-                <td>Member Country</td>
+                <th>Member ID</th>
+                <th>Password</th>
+                <th>Member Email</th>
+                <th>Member Company</th>
+                <th>Member City</th>
+                <th>Member Country</th>
             </tr>
         </thead>
         <tbody>

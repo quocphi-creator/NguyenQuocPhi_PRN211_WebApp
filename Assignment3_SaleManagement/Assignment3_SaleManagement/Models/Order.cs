@@ -12,6 +12,16 @@ namespace Assignment3_SaleManagement.Models
             OrderDetails = new HashSet<OrderDetail>();
         }
 
+        public Order(int orderId, Member member, DateTime orderDate, DateTime? requiredDate, DateTime? shippedDate, decimal? freight)
+        {
+            OrderId = orderId;
+            Member = member;
+            OrderDate = orderDate;
+            RequiredDate = requiredDate;
+            ShippedDate = shippedDate;
+            Freight = freight;
+        }
+
         public int OrderId { get; set; }
         public int MemberId { get; set; }
         public DateTime OrderDate { get; set; }

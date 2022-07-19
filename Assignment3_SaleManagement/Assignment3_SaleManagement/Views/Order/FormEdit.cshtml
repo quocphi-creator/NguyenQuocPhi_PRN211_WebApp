@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@using Assignment3_SaleManagement.Models
+@model Order
+
+@{
+    List<Member> members = (List<Member>)ViewBag.Members;
+}
+
+<!doctype html>
+<html>
+<head>
+    <title>Insert Order</title>
+
+</head>
+<body>
+    <h2>wellcome to Edit</h2>
+    <form action="~/Order/Edit" method="post">
+        <input type="hidden" name="Id" value="@Model.OrderId" /> Order ID: @Model.OrderId
+        <br />
+        <input type="datetime-local" name="order" value="@Model.OrderDate" /> Order date
+        <br />
+        <input type="datetime-local" name="requirement" value="@Model.RequiredDate" /> require date
+        <br />
+        <input type="datetime-local" name="ship" value="@Model.ShippedDate"/> Shipped date
+        <br />
+
+        <select name="member">
+            @{
+                foreach (Member m in members)
+                {
+                    <option value="@m.MemberId">@m.Email</option>
+                }
+            }
+        </select>
+        <br />
+        <input type="text" name="freight" value="@Model.Freight"/> Freight
+        <br />
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>
